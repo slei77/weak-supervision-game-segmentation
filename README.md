@@ -17,8 +17,14 @@ This project explores weakly supervised segmentation in bullet-hell game environ
 Initially, the task was defined as bullet instance segmentation. However, due to limitations in heuristic label generation, discrete projectiles were frequently merged. As a result, the task was reframed as hazard-region segmentation, where labels represent spatial regions of projectile rather than individual bullets. 
 
 ## 2. Example Result
+| Frame | Prediction |
+| --- | --- |
+|<img src="https://github.com/user-attachments/assets/0e7e9e14-912a-4ea2-bef4-c41ebf4bb14f" />|<img src="https://github.com/user-attachments/assets/a56bc281-ecf8-4543-830c-89fae9a236cd" />|
 
 
+| Auto Label | Manual Label |
+| --- | --- |
+|<img src="https://github.com/user-attachments/assets/5629afc2-2d3c-4721-a9b9-0235256f4f9a" />|<img src="https://github.com/user-attachments/assets/cbd2ab8b-33a4-40c3-948e-952843a7d3dd" />|
 
 ## 3. Motivation
 
@@ -67,7 +73,25 @@ Model predictions aligned more closely with manually refined annotations than wi
 
 ## 8. Failure Cases
 
+| Prediction | Auto Label |
+| --- | --- |
+|<img src="https://github.com/user-attachments/assets/a56bc281-ecf8-4543-830c-89fae9a236cd" />|<img src="https://github.com/user-attachments/assets/5629afc2-2d3c-4721-a9b9-0235256f4f9a" />|
 
+The model mistakenly detects the glow around the projectile. This stems from an issue with the auto-labeler, which struggles to differentiate between the projectile itself and its glow. Consequently, the model is training on these weak labels and learning to include the glow in its predictions. 
+
+
+| Auto Label | Prediction |
+| --- | --- |
+|<img width="2560" height="1600" alt="s4_frame_0452_visualization" src="https://github.com/user-attachments/assets/4cb317a8-d452-4975-ba82-0fd5fb608855" />|<img width="2560" height="1600" alt="predicted_frame" src="https://github.com/user-attachments/assets/32100c37-1e32-49f2-b3dc-9ec552dac805" />|
+
+The auto-labeler captured background noise around the boss despite the HSV filter being limited to magenta and purple. This discrepancy is likely caused by the blur and erosion preprocessing steps, which accidentally smeared adjacent red aura around the boss into the target magenta spectrum before filtering.
+
+
+| Auto Label | Prediction |
+| --- | --- |
+|<img width="2560" height="1600" alt="s4_frame_0030_visualization" src="https://github.com/user-attachments/assets/2c0b32a8-816c-49a5-a169-9aecfbadbbb5" />|<img width="2560" height="1600" alt="predicted_frame" src="https://github.com/user-attachments/assets/bab30082-6ba6-4a34-a538-6526be6e8228" />|
+
+The auto-labeler struggles to detect parts of the circle due to its dark purple hue and extremely low Value (V) channel. Compounded by the overall darkness of the scene, the labeler also mistakenly captured parts of the faint aura. While the model's predictions suffer from the same dark-color limitations, it interestingly managed to suppress some of that faint aura.
 
 ## 9. Future Work
 
