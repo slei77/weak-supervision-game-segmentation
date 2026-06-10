@@ -1,0 +1,26 @@
+predict vs auto
+=============================================
+       Global mask component report      
+=============================================
+Dataset-wide Global IoU:       0.8577
+Average Image-level IoU:       0.8186
+Worst Performing Image IoU:    0.0000
+=============================================
+
+predict vs manual
+=============================================
+       GLOBAL MASK COMPONENT REPORT      
+=============================================
+Dataset-wide Global IoU:       0.7359
+Average Image-level IoU:       0.7605
+Worst Performing Image IoU:    0.1542
+=============================================
+
+auto vs manual
+=============================================
+       Global mask component report      
+=============================================
+Dataset-wide Global IoU:       0.8096
+Average Image-level IoU:       0.7871
+Worst Performing Image IoU:    0.0000
+=============================================

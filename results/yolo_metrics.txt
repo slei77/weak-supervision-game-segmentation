@@ -1,0 +1,19 @@
+OpenCV label result:
+
+{'metrics/precision(B)': 0.9035628893422843, 'metrics/recall(B)': 0.7168674698795181, 
+'metrics/mAP50(B)': 0.7682258080332888, 'metrics/mAP50-95(B)': 0.6409948418673945, 
+
+'metrics/precision(M)': 0.8842606767884744, 'metrics/recall(M)': 0.6987951807228916, 
+'metrics/mAP50(M)': 0.7374934732947842, 'metrics/mAP50-95(M)': 0.560912722131523, 
+
+'fitness': 1.2019075639989176}
+
+Manual label result:
+
+{'metrics/precision(B)': 0.8926138954456199, 'metrics/recall(B)': 0.7916507593782709, 
+'metrics/mAP50(B)': 0.8663446273971911, 'metrics/mAP50-95(B)': 0.6885391947717476, 
+
+'metrics/precision(M)': 0.8949124877113671, 'metrics/recall(M)': 0.6904761904761905, 
+'metrics/mAP50(M)': 0.791068269217477, 'metrics/mAP50-95(M)': 0.574732076636775, 
+
+'fitness': 1.2632712714085226}
