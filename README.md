@@ -10,6 +10,7 @@
 7. [Key Findings](#7-key-findings)
 8. [Failure Cases](#8-failure-cases)
 9. [Future Work](#9-future-work)
+10. [Repository Structure](#10-repository-structure)
 
 ## 1. Project Overview
 This project explores weakly supervised segmentation in bullet-hell game environments. Because obtaining ground-truth projectile annotations from game footage is difficult, OpenCV-based HSV contour heuristics were used to generate pseudo-labels for training a YOLO segmentation model. The project investigates how label noise affects learned representations and evaluates model behavior against manually corrected annotations.
@@ -96,3 +97,16 @@ The auto-labeler struggles to detect parts of the circle due to its dark purple 
 ## 9. Future Work
 
 Future work would focus on extracting ground-truth projectile and indicator data directly from game memory or engine state, allowing for large-scale perfectly labeled datasets and more precise instance segmentation.
+
+## 10. Repository Structure
+
+```
+weak-supervision-game-segmentation/
+├── model/
+│   ├── best.onnx
+│   └── best.pt
+├── results/
+├── src/
+├── README.md
+└── dataset.txt
+```
