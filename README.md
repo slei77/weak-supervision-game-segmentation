@@ -13,7 +13,7 @@
 10. [Repository Structure](#10-repository-structure)
 
 ## 1. Project Overview
-This project explores weakly supervised segmentation in bullet-hell game environments. Because obtaining ground-truth projectile annotations from game footage is difficult, OpenCV-based HSV contour heuristics were used to generate pseudo-labels for training a YOLO segmentation model. The project investigates how label noise affects learned representations and evaluates model behavior against manually corrected annotations.
+This project explores weakly supervised segmentation in bullet-hell game environments. Because obtaining ground-truth projectile annotations from game footage is difficult, OpenCV-based HSV contour heuristics were used to generate heuristic labels for training a YOLO segmentation model. The project investigates how label noise affects learned representations and evaluates model behavior against manually corrected annotations.
 
 Initially, the task was defined as bullet instance segmentation. However, due to limitations in heuristic label generation, discrete projectiles were frequently merged. As a result, the task was reframed as hazard-region segmentation, where labels represent spatial regions of projectile rather than individual bullets. 
 
@@ -29,7 +29,7 @@ Initially, the task was defined as bullet instance segmentation. However, due to
 
 ## 3. Motivation
 
-Bullet-hell scenes contain hundreds of projectiles on-screen at once, making manual instance segmentation incredibly time-consuming. Pseudo-labeling solves this by accelerating dataset generation, producing thousands of labels in the time it would take to manually annotate just a few samples.
+Bullet-hell scenes contain hundreds of projectiles on-screen at once, making manual instance segmentation incredibly time-consuming. Heuristic labeling solves this by accelerating dataset generation, producing thousands of labels in the time it would take to manually annotate just a few samples.
 
 ## 4. Pipeline
 
@@ -64,12 +64,12 @@ The asymmetric mean IoU indicates that the heuristic auto-labeler causes over-se
 | Prediction vs Auto | 0.52 |
 | Prediciton vs Manual | 0.60 |
 
-Model predictions aligned more closely with manually refined annotations than with original pseudo-labels.
+Model predictions aligned more closely with manually refined annotations than with original heuristic labels.
 
 ## 7. Key Findings
 
-- HSV contour heuristics enabled rapid pseudo-label generation but has trouble separating nearby projectiles, at least without heavy curation. 
-- On a manually corrected evaluation subset, model predictions exhibited higher agreement with human-refined annotations than with the original pseudo-labels.
+- HSV contour heuristics enabled rapid heuristic label generation but has trouble separating nearby projectiles, at least without heavy curation. 
+- On a manually corrected evaluation subset, model predictions exhibited higher agreement with human-refined annotations than with the original heuristic labels.
 - Dataset quality appeared to be the primary limitation for precise projectile instance segmentation rather than model capacity.
 
 ## 8. Failure Cases
